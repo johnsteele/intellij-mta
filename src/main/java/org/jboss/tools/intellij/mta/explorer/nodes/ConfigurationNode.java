@@ -8,6 +8,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.tree.StructureTreeModel;
 import org.jboss.tools.intellij.mta.cli.MtaResultsParser;
+import org.jboss.tools.intellij.mta.editor.ConfigurationEditor;
 import org.jboss.tools.intellij.mta.explorer.dialog.SetOutputLocationDialog;
 import org.jboss.tools.intellij.mta.model.MtaConfiguration;
 import org.jboss.tools.intellij.mta.model.MtaConfiguration.*;
@@ -56,18 +57,18 @@ public class ConfigurationNode extends MtaExplorerNode<MtaConfiguration> {
 
     @Override
     public void onDoubleClick(Project project, StructureTreeModel treeModel) {
-        String currentOutput = (String)this.getValue().getOptions().get("output");
-        currentOutput = currentOutput != null ? currentOutput : "";
-        SetOutputLocationDialog dialog = new SetOutputLocationDialog(currentOutput);
-        if (dialog.showAndGet()) {
-            String output = dialog.getOutputLocation();
-            this.getValue().getOptions().put("output", output);
-            MtaConfiguration.AnalysisResultsSummary summary = new MtaConfiguration.AnalysisResultsSummary(this.modelService);
-            summary.outputLocation = output;
-            this.getValue().setSummary(summary);
-            MtaResultsParser.parseResults(this.getValue(), true);
-            this.modelService.saveModel();
-            treeModel.invalidate();
-        }
+//        String currentOutput = (String)this.getValue().getOptions().get("output");
+//        currentOutput = currentOutput != null ? currentOutput : "";
+//        SetOutputLocationDialog dialog = new SetOutputLocationDialog(currentOutput);
+//        if (dialog.showAndGet()) {
+//            String output = dialog.getOutputLocation();
+//            this.getValue().getOptions().put("output", output);
+//            MtaConfiguration.AnalysisResultsSummary summary = new MtaConfiguration.AnalysisResultsSummary(this.modelService);
+//            summary.outputLocation = output;
+//            this.getValue().setSummary(summary);
+//            MtaResultsParser.parseResults(this.getValue(),true);
+//            this.modelService.saveModel();
+//            treeModel.invalidate();
+//        }
     }
 }
